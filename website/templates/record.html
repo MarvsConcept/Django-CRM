@@ -2,17 +2,30 @@
 
 {% block content %}
 
-<h1>Customer Record</h1>
+<div class="card">
+    <div class="card-header">
+      <strong>
+      {{ customer_record.first_name }} 
+      {{ customer_record.last_name }}
+    </strong>
+    </div>
+    <div class="card-body">
+      <p class="card-title">
+          <strong>Email: </strong>{{ customer_record.email }} <p> 
+          <strong>Phone: </strong>{{ customer_record.phone }} <p>
+          <strong>Address: </strong>{{ customer_record.address }} <p>
+          <strong>City: </strong>{{ customer_record.city }} <p>
+          <strong>State: </strong> {{ customer_record.state }} <p>
+          <strong>Zipcode: </strong>{{ customer_record.zipcode }} <p>
+          <strong>Created at: </strong>{{ customer_record.created_at }} <p>
+          <strong>ID: </strong>{{ customer_record.id }} 
+      </p>
+    </div>
+  </div>
 
+<br>
+<a href="{% url 'Home' %}" class="btn btn-secondary">Back</a>
 
-{{ customer_record.first_name }} {{ customer_record.last_name }} <br>
-{{ customer_record.email }} <br>
-{{ customer_record.phone }} <br>
-{{ customer_record.address }} <br>
-{{ customer_record.city }} <br>
-{{ customer_record.state }} <br>
-{{ customer_record.zipcode }} <br>
-{{ customer_record.created_at }} <br>
-{{ customer_record.id }} 
+<a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Delete</a>
 
 {% endblock %}
