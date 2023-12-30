@@ -23,11 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q2a%9tx1jzn+dy6ul!j#99cvu2=8o$z9g^%=qkl&#xsacc61w2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    '.vercel.app'
-    ]
+    '.vercel.app',
+    '.now.sh',
+    '127.0.0.1',
+    'localhost'
+    
+]
 
 
 # Application definition
@@ -78,8 +82,12 @@ WSGI_APPLICATION = 'dcrm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '5-fc*4ceA5dF3G5-d2A63GA3B5d26*-g',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'PORT': '29444'
     }
 }
 
@@ -119,6 +127,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
