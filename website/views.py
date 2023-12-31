@@ -21,7 +21,7 @@ def home(request):
             messages.success(request, "There was an error logging in, Please try again...")
             return redirect('Home')
     else:
-        return render(request, 'home.html', {'records':records})
+        return render(request, 'website/home.html', {'records':records})
 
 
 def logout_user(request):
@@ -43,16 +43,16 @@ def register_user(request):
             return redirect('Home')
     else:
         form = SignUpForm()
-        return render(request, 'register.html', {'form':form})
+        return render(request, 'website/register.html', {'form':form})
     
-    return render(request, 'register.html', {'form':form})
+    return render(request, 'website/register.html', {'form':form})
 
 
 def customer_record(request, pk):
     if request.user.is_authenticated:
         #Look Up Records
         customer_record = Record.objects.get(id=pk)
-        return render(request, 'record.html', {'customer_record':customer_record})
+        return render(request, 'website/record.html', {'customer_record':customer_record})
     else:
         messages.success(request, "You must be logged in to view that page!")
         return redirect("Home")
@@ -75,7 +75,7 @@ def add_record(request):
                 add_record = form.save()
                 messages.success(request, "Record Added successfully...")
                 return redirect("Home")
-        return render(request, 'add_record.html', {'form':form})
+        return render(request, 'website/add_record.html', {'form':form})
     else:
         messages.success(request, "You must be logged in!")
         return redirect ("Home")
@@ -88,7 +88,7 @@ def update_record(request, pk):
             form.save()
             messages.success(request, "Record Updated Successfully")
             return redirect("Home")
-        return render(request, 'update_record.html', {'form':form})
+        return render(request, 'website/update_record.html', {'form':form})
     else:
         messages.success(request, "you must be logged in...")
         return redirect("Home")
